@@ -30,3 +30,16 @@ steps:
   inputs:
     command: 'publish'
     publishWebProjects: true
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: '$(Pipeline.Workspace)'
+    publishLocation: 'pipeline'
+
+- task: AzureRmWebAppDeployment@4
+  inputs:
+    ConnectionType: 'AzureRM'
+    azureSubscription: 'Tailorsoft Subscription(29525937-84e0-428b-b0a8-ccef7c5fecb7)'
+    appType: 'webAppLinux'
+    WebAppName: 'tbs-commonapi'
+    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
