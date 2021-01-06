@@ -25,3 +25,8 @@ steps:
   inputs:
     version: '3.0.x'
     packageType: runtime
+
+- task: DotNetCoreCLI@2
+  inputs:
+    command: 'publish'
+    publishWebProjects: true
